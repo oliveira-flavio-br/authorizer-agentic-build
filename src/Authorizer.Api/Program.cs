@@ -1,10 +1,17 @@
+using Authorizer.Infrastructure.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add Aspire service defaults (health checks, telemetry, service discovery)
+builder.AddServiceDefaults();
+
+// Add PostgreSQL database context with Aspire integration
+builder.AddNpgsqlDbContext<AuthorizerDbContext>("authorizerdb");
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.MapDefaultEndpoints();
 
 app.UseHttpsRedirection();
 
