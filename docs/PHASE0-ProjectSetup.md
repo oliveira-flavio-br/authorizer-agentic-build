@@ -143,22 +143,22 @@ dotnet add tests/Authorizer.IntegrationTests reference src/Authorizer.Api
 
 ---
 
-## Step 0.4: Add NuGet Packages
+## Step 0.4: Add NuGet Packages ✅
 
 ### Goal
 Install all required dependencies for the project
 
 ### Tasks
-- [ ] Add EF Core and PostgreSQL packages to Infrastructure
-- [ ] Add Aspire packages to API
-- [ ] Add testing libraries to test projects
-- [ ] Verify all packages restore successfully
+- [x] Add EF Core and PostgreSQL packages to Infrastructure
+- [x] Add Aspire packages to API
+- [x] Add testing libraries to test projects
+- [x] Verify all packages restore successfully
 
 ### Commands
 ```bash
-# Infrastructure - EF Core and PostgreSQL
-dotnet add src/Authorizer.Infrastructure package Npgsql.EntityFrameworkCore.PostgreSQL
-dotnet add src/Authorizer.Infrastructure package Microsoft.EntityFrameworkCore.Design
+# Infrastructure - EF Core and PostgreSQL (.NET 8 versions)
+dotnet add src/Authorizer.Infrastructure package Npgsql.EntityFrameworkCore.PostgreSQL --version 8.0.10
+dotnet add src/Authorizer.Infrastructure package Microsoft.EntityFrameworkCore.Design --version 8.0.11
 
 # API - Aspire
 dotnet add src/Authorizer.Api package Aspire.Npgsql.EntityFrameworkCore.PostgreSQL
@@ -166,16 +166,32 @@ dotnet add src/Authorizer.Api package Aspire.Npgsql.EntityFrameworkCore.PostgreS
 # Test projects - Testing libraries
 dotnet add tests/Authorizer.Application.Tests package Moq
 dotnet add tests/Authorizer.Application.Tests package FluentAssertions
-dotnet add tests/Authorizer.Infrastructure.Tests package Microsoft.EntityFrameworkCore.InMemory
+dotnet add tests/Authorizer.Infrastructure.Tests package Microsoft.EntityFrameworkCore.InMemory --version 8.0.11
 dotnet add tests/Authorizer.IntegrationTests package Testcontainers.PostgreSql
 ```
 
-### Validation
-- [ ] All packages restore without errors
-- [ ] No package version conflicts
-- [ ] Solution builds successfully with all packages
+### Implementation Notes
+**Infrastructure Packages:**
+- Npgsql.EntityFrameworkCore.PostgreSQL 8.0.10 - PostgreSQL provider for EF Core
+- Microsoft.EntityFrameworkCore.Design 8.0.11 - Design-time components for migrations
 
-### ⚠️ CHECKPOINT: Request review before proceeding
+**API Packages:**
+- Aspire.Npgsql.EntityFrameworkCore.PostgreSQL 9.5.2 - Aspire integration with health checks
+
+**Test Packages:**
+- Moq 4.20.72 - Mocking framework for unit tests
+- FluentAssertions 8.8.0 - Fluent API for test assertions
+- Microsoft.EntityFrameworkCore.InMemory 8.0.11 - In-memory database for testing
+- Testcontainers.PostgreSql 4.8.1 - Docker PostgreSQL containers for integration tests
+
+All packages selected for .NET 8 compatibility. Keeping it simple - additional packages (MediatR, FluentValidation, Swashbuckle) can be added later if needed.
+
+### Validation
+- [x] All packages restore without errors
+- [x] No package version conflicts
+- [x] Solution builds successfully with all packages
+
+### ✅ CHECKPOINT: Completed - Commit `5f4d69b` - Pushed to GitHub
 
 ---
 
@@ -220,7 +236,7 @@ builder.Build().Run();
 Before moving to Phase 1, ensure:
 - [x] All projects are created and organized
 - [x] Project references are correctly configured
-- [ ] All NuGet packages are installed
+- [x] All NuGet packages are installed
 - [ ] PostgreSQL is configured with Aspire
 - [x] Solution builds successfully
 - [ ] All validation steps passed
@@ -233,12 +249,13 @@ Before moving to Phase 1, ensure:
 - ✅ **Step 0.1**: Initialize .NET Aspire Solution (Commit: `c440a4f`)
 - ✅ **Step 0.2**: Create Project Structure (Commit: `7bcb19f`)
 - ✅ **Step 0.3**: Configure Project References (Commit: `ad8e5d2`)
+- ✅ **Step 0.4**: Add NuGet Packages (Commit: `5f4d69b`)
 
 ### In Progress:
-- ⏳ **Step 0.4**: Add NuGet Packages
+- ⏳ **Step 0.5**: Setup PostgreSQL with Aspire
 
 ### Pending:
-- ⏸️ **Step 0.5**: Setup PostgreSQL with Aspire
+- None - Final step in progress!
 
 ---
 
