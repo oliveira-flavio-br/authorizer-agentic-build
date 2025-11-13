@@ -1,5 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <ItemGroup>
+    <ProjectReference Include="..\Authorizer.Core\Authorizer.Core.csproj" />
+    <ProjectReference Include="..\Authorizer.Application\Authorizer.Application.csproj" />
+    <ProjectReference Include="..\Authorizer.Infrastructure\Authorizer.Infrastructure.csproj" />
+    <ProjectReference Include="..\Authorizer.ServiceDefaults\Authorizer.ServiceDefaults.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>

@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Authorizer.Api\Authorizer.Api.csproj" />
+  </ItemGroup>
+
 </Project>
