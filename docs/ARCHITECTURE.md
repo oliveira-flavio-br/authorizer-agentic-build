@@ -20,7 +20,7 @@ This document outlines the architecture and design decisions for the Payment Aut
 └───────┬────────┘                    └─────────────────┘
         │
 ┌───────▼──────────────────────────────────────────────────────┐
-│           Authorization Service                               │
+│           Authorization Service                              │
 │  ┌────────────────────────────────────────────────────────┐  │
 │  │  Authorization Engine (Orchestrator)                   │  │
 │  └────────────────────────────────────────────────────────┘  │
