@@ -93,17 +93,17 @@ dotnet sln add (Get-ChildItem -Path src,tests -Filter *.csproj -Recurse | Select
 
 ---
 
-## Step 0.3: Configure Project References
+## Step 0.3: Configure Project References ✅
 
 ### Goal
 Set up proper dependency flow between projects
 
 ### Tasks
-- [ ] Application references Core
-- [ ] Infrastructure references Core and Application
-- [ ] API references all layers
-- [ ] Each test project references its corresponding project
-- [ ] Verify dependency graph is acyclic
+- [x] Application references Core
+- [x] Infrastructure references Core and Application
+- [x] API references all layers
+- [x] Each test project references its corresponding project
+- [x] Verify dependency graph is acyclic
 
 ### Commands
 ```bash
@@ -114,24 +114,32 @@ dotnet add src/Authorizer.Application reference src/Authorizer.Core
 dotnet add src/Authorizer.Infrastructure reference src/Authorizer.Core
 dotnet add src/Authorizer.Infrastructure reference src/Authorizer.Application
 
-# API references all
+# API references all (including ServiceDefaults for Aspire)
 dotnet add src/Authorizer.Api reference src/Authorizer.Core
 dotnet add src/Authorizer.Api reference src/Authorizer.Application
 dotnet add src/Authorizer.Api reference src/Authorizer.Infrastructure
+dotnet add src/Authorizer.Api reference src/Authorizer.ServiceDefaults
 
 # Configure test project references
 dotnet add tests/Authorizer.Core.Tests reference src/Authorizer.Core
 dotnet add tests/Authorizer.Application.Tests reference src/Authorizer.Application
 dotnet add tests/Authorizer.Infrastructure.Tests reference src/Authorizer.Infrastructure
 dotnet add tests/Authorizer.Api.Tests reference src/Authorizer.Api
+dotnet add tests/Authorizer.IntegrationTests reference src/Authorizer.Api
 ```
 
-### Validation
-- [ ] All project references are correctly configured
-- [ ] No circular dependencies exist
-- [ ] Solution builds successfully
+### Implementation Notes
+- Clean architecture dependency flow established
+- API references ServiceDefaults for Aspire integration (health checks, telemetry, service discovery)
+- IntegrationTests references API for full stack testing
+- Dependency graph is acyclic and follows best practices
 
-### ⚠️ CHECKPOINT: Request review before proceeding
+### Validation
+- [x] All project references are correctly configured
+- [x] No circular dependencies exist
+- [x] Solution builds successfully
+
+### ✅ CHECKPOINT: Completed - Commit `ad8e5d2` - Pushed to GitHub
 
 ---
 
@@ -211,7 +219,7 @@ builder.Build().Run();
 
 Before moving to Phase 1, ensure:
 - [x] All projects are created and organized
-- [ ] Project references are correctly configured
+- [x] Project references are correctly configured
 - [ ] All NuGet packages are installed
 - [ ] PostgreSQL is configured with Aspire
 - [x] Solution builds successfully
@@ -224,12 +232,12 @@ Before moving to Phase 1, ensure:
 ### Completed Steps:
 - ✅ **Step 0.1**: Initialize .NET Aspire Solution (Commit: `c440a4f`)
 - ✅ **Step 0.2**: Create Project Structure (Commit: `7bcb19f`)
+- ✅ **Step 0.3**: Configure Project References (Commit: `ad8e5d2`)
 
 ### In Progress:
-- ⏳ **Step 0.3**: Configure Project References
+- ⏳ **Step 0.4**: Add NuGet Packages
 
 ### Pending:
-- ⏸️ **Step 0.4**: Add NuGet Packages
 - ⏸️ **Step 0.5**: Setup PostgreSQL with Aspire
 
 ---
