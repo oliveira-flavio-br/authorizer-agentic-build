@@ -256,12 +256,12 @@ app.MapDefaultEndpoints();
 
 ### Implementation Notes
 - **PostgreSQL runs in Docker container automatically** - Aspire handles Docker image pull and container lifecycle
-- Added `Aspire.Hosting.PostgreSQL` package (v13.0.0) to AppHost
+- Added `Aspire.Hosting.PostgreSQL` package (initially v8.2.2, later upgraded to v13.0.0)
 - Created minimal `AuthorizerDbContext` for connection testing (entities will be added in Phase 1)
 - Configured with `.WithDataVolume()` for data persistence between container restarts
 - Database name: `authorizerdb`
 - ServiceDefaults provides health checks, telemetry, and service discovery
-- AppHost dashboard available for monitoring (typically at `http://localhost:15000`)
+- AppHost dashboard available at `https://localhost:17240` (or `http://localhost:15299`)
 
 ### Validation
 - [x] Aspire AppHost project runs without errors
@@ -297,6 +297,13 @@ Before moving to Phase 1, ensure:
 
 ### Status:
 **🎉 PHASE 0 COMPLETE - Foundation Ready for Phase 1!**
+
+### Post-Completion Updates:
+- 📦 **Aspire Version Upgrade** (Commit: `9c88347`)
+  - Fixed runtime compatibility issues
+  - Upgraded `Aspire.Hosting.AppHost` from 8.2.2 → 13.0.0
+  - Added `Aspire.AppHost.Sdk` reference (v13.0.0) as required by newer Aspire versions
+  - Ensures all Aspire packages are aligned at v13.0.0
 
 ---
 
