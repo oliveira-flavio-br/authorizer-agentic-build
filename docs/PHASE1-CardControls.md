@@ -21,12 +21,12 @@ For EVERY step:
 ### Step 1.1.1: Create Domain Entities (Core)
 
 #### TDD Cycle
-- [ ] **RED:** Write `CardTests.cs` test first
-- [ ] **RED:** Run test and verify it FAILS (class doesn't exist yet)
-- [ ] **GREEN:** Create `Card` entity with minimal properties
-- [ ] **GREEN:** Create `CardStatus` enum
-- [ ] **GREEN:** Run test and verify it PASSES
-- [ ] **REFACTOR:** Review and improve if needed
+- [x] **RED:** Write `CardTests.cs` test first
+- [x] **RED:** Run test and verify it FAILS (class doesn't exist yet)
+- [x] **GREEN:** Create `Card` entity with minimal properties
+- [x] **GREEN:** Create `CardStatus` enum
+- [x] **GREEN:** Run test and verify it PASSES
+- [x] **REFACTOR:** Review and improve if needed
 
 #### Test Implementation
 **File: `tests/Authorizer.Core.Tests/Entities/CardTests.cs`**
@@ -54,14 +54,14 @@ public class CardTests
 ```
 
 #### Implementation Tasks
-- [ ] Create `src/Authorizer.Core/Entities/Card.cs`
-- [ ] Create `src/Authorizer.Core/Enums/CardStatus.cs`
-- [ ] Ensure all properties are correctly defined
+- [x] Create `src/Authorizer.Core/Entities/Card.cs`
+- [x] Create `src/Authorizer.Core/Enums/CardStatus.cs`
+- [x] Ensure all properties are correctly defined
 
 #### Validation
-- [ ] Test passes ✅
-- [ ] Code is clean and follows conventions
-- [ ] Entity follows domain-driven design principles
+- [x] Test passes ✅
+- [x] Code is clean and follows conventions
+- [x] Entity follows domain-driven design principles
 
 #### ⚠️ CHECKPOINT: Request review before proceeding
 
